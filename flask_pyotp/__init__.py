@@ -24,11 +24,11 @@ class PyOTP():
             self.hotp = pyotp.HOTP(secret_key, **kwargs)
 
     def now(self):
-        check_type('HOTP')
+        self.check_type('HOTP')
         return self.totp.now()
 
     def at(self, counter):
-        check_type('TOTP')
+        self.check_type('TOTP')
         return self.hotp.at(counter)
 
     def verify(self, token, counter=None):
